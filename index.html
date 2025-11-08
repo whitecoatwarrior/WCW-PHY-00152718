@@ -1,0 +1,2289 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwuJD-NddcLbcaap_utAGs0yXcuVjaDFOUZn9SC1Cjs9h9jLrtGAiaiHDPq7e7H3tkZOg/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_CHE_0014 = [
+    {
+        question: "A newly characterized acyclic compound contains a single carbonyl group and is fully saturated apart from the carbon-oxygen double bond. Which general elemental composition formula accurately describes such a molecule?",
+        options: [
+            "CnH2nO",
+            "CnH2n+2O",
+            "CnH2n-2O",
+            "CnHnO"
+        ],
+        correctAnswer: 0,
+        reasoning: "It's mention in Textbook theory as aldehydes and ketones, which are acyclic monocarbonyl compounds saturated except for the C=O bond, share the general formula CnH2nO."
+    },
+    {
+        question: "The defining structural moiety that renders a carbonyl compound an aldehyde specifically, rather than a ketone or a carboxylic acid derivative, involves the carbonyl carbon being directly bonded to:",
+        options: [
+            "Two alkyl groups",
+            "Two oxygen atoms",
+            "At least one hydrogen atom and one alkyl/aryl group",
+            "A nitrogen atom and a hydrogen atom"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory as a formyl group (-CHO) defines an aldehyde, which is a carbonyl group bonded to one alkyl (or aryl) group and one hydrogen atom. This presence of hydrogen directly on the carbonyl carbon is the distinguishing feature."
+    },
+    {
+        question: "In the IUPAC systematic naming of certain aldehydes, the carbon atom of the formyl group is not included in the primary chain count. This specific nomenclature practice is employed when the formyl group is:",
+        options: [
+            "Part of a branched aliphatic chain",
+            "The sole functional group in a simple straight-chain alkane",
+            "Attached to another aldehyde group in a dialdehyde",
+            "Directly appended to a cyclic hydrocarbon structure"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theory as the suffix 'carbaldehyde' is used when the aldehyde group is attached to a ring, indicating that the carbonyl carbon is not part of the ring's numbering scheme, and thus not included in the primary chain count."
+    },
+    {
+        question: "The designation of formaldehyde as the most fundamental aldehyde is structurally supported by the fact that its carbonyl carbon is uniquely bonded to:",
+        options: [
+            "Two hydrogen atoms",
+            "One alkyl group and one hydrogen atom",
+            "Two identical alkyl groups",
+            "One aryl group and one hydrogen atom"
+        ],
+        correctAnswer: 0,
+        reasoning: "It's mention in Textbook theory as formaldehyde (H-CHO) is the simplest aldehyde, characterized by having two hydrogen atoms bonded to the carbonyl group."
+    },
+    {
+        question: "The spatial arrangement of atoms directly surrounding the carbonyl carbon in an aldehyde or ketone is fundamentally influenced by its hybridization, resulting in a distinct geometry. Which describes this arrangement?",
+        options: [
+            "Tetrahedral, with 109.5° bond angles",
+            "Trigonal planar, with approximately 120° bond angles",
+            "Linear, with 180° bond angles",
+            "Pyramidal, with angles less than 109.5°"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory as the carbonyl carbon is sp² hybridized, leading to a trigonal planar geometry for the three atoms attached to it, with bond angles of approximately 120°."
+    },
+    {
+        question: "Two organic compounds share the molecular formula C3H6O. One exhibits a terminal carbonyl group, while the other features an internal carbonyl group. This relationship exemplifies which type of isomerism?",
+        options: [
+            "Chain isomerism",
+            "Position isomerism",
+            "Functional group isomerism",
+            "Tautomerism"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory as aldehydes (terminal carbonyl, e.g., propanal) and ketones (internal carbonyl, e.g., propanone) with the same general formula (CnH2nO) are functional group isomers."
+    },
+    {
+        question: "When an alkene undergoes ozonolysis followed by reductive work-up, a mixture of two distinct carbonyl compounds is obtained. This outcome definitively implies that the original alkene structure was:",
+        options: [
+            "Formed via hydration of an alkyne",
+            "Substituted only with hydrogen atoms",
+            "Symmetrical with respect to its carbon-carbon double bond",
+            "Asymmetrical with different substituents around its double bond"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theory as asymmetrical alkenes yield a mixture of products upon ozonolysis, whereas symmetrical alkenes produce a single product. Therefore, obtaining a mixture indicates an asymmetrical alkene."
+    },
+    {
+        question: "The hydration of alkynes, excluding acetylene, consistently yields ketones. This specificity is primarily attributed to the application of Markovnikov's rule during the initial addition of water across the triple bond, which dictates:",
+        options: [
+            "That the carbonyl oxygen ultimately originates from the more substituted carbon of the original triple bond",
+            "That hydrogen exclusively attaches to the carbon atom which is more substituted",
+            "That the hydrogen atom of water initially bonds to the carbon atom of the triple bond carrying fewer alkyl substituents",
+            "The direct and immediate formation of a stable ketone without intermediate steps"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory as higher alkynes yield ketones following Markovnikov's rule, which dictates that the hydrogen atom adds to the less substituted carbon of the triple bond. This initial addition pattern is critical for the subsequent formation of the ketone."
+    },
+    {
+        question: "When synthesizing an aldehyde from a primary alcohol, Pyridinium Chlorochromate (PCC) is often the preferred oxidizing agent. This preference is primarily due to PCC's ability to:",
+        options: [
+            "Selectively oxidize primary alcohols to aldehydes without further oxidation to carboxylic acids",
+            "Efficiently oxidize tertiary alcohols to ketones",
+            "Convert secondary alcohols directly to carboxylic acids",
+            "Function as a strong reducing agent for aldehydes"
+        ],
+        correctAnswer: 0,
+        reasoning: "It's mention in Textbook theory as good yields of aldehydes from primary alcohols can be obtained using Pyridinium Chlorochromate (PCC), implying its role as a mild and selective oxidizing agent that stops at the aldehyde stage."
+    },
+    {
+        question: "The Friedel-Crafts Acylation reaction, utilizing benzene and an acylating agent with a Lewis acid, reliably produces a specific class of organic compounds characterized by a carbonyl group directly linked to an aromatic ring on one side and an alkyl or aryl group on the other. This product class is known as:",
+        options: [
+            "Aromatic aldehydes",
+            "Aliphatic ketones",
+            "Aromatic ketones",
+            "Carboxylic acids"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory as Friedel-Crafts Acylation of aromatics produces aromatic ketones, such as acetophenone from benzene and acetyl chloride."
+    },
+    {
+        question: "During the initial stage of a nucleophilic addition reaction to a carbonyl compound, the immediate electronic rearrangement following the nucleophile's attack on the carbonyl carbon involves:",
+        options: [
+            "The displacement of pi electrons onto the carbonyl oxygen atom",
+            "A shift of sigma electrons towards the oxygen atom",
+            "The breakage of the carbon-oxygen sigma bond",
+            "The formation of a new pi bond between the carbon and the nucleophile"
+        ],
+        correctAnswer: 0,
+        reasoning: "It's mention in Textbook theory as during nucleophilic addition, the nucleophile attacks the carbonyl carbon, and the π electrons shift to oxygen to form an alkoxide ion. This electron shift is the immediate consequence."
+    },
+    {
+        question: "The inherent reactivity of the carbonyl group towards nucleophiles is fundamentally rooted in the electronegativity difference between carbon and oxygen. This difference directly establishes the carbonyl carbon as:",
+        options: [
+            "A strong nucleophile",
+            "Sterically hindered",
+            "Electrophilic, possessing a partial positive charge",
+            "Resonance stabilized by electron donation"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory as the high electronegativity of oxygen polarizes the C=O bond, making the carbonyl carbon electrophilic (partially positive), which is the primary reason for its susceptibility to nucleophilic attack."
+    },
+    {
+        question: "The completion of a nucleophilic addition reaction at the carbonyl carbon fundamentally alters its hybridization state. This change, from sp² to sp³, inherently transforms the local geometry around this carbon from:",
+        options: [
+            "Linear to bent",
+            "Tetrahedral to trigonal planar",
+            "Pyramidal to square planar",
+            "Trigonal planar to tetrahedral"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theory as nucleophilic attack changes the carbonyl carbon's hybridization from sp² to sp³, and its geometry simultaneously changes from trigonal planar to tetrahedral."
+    },
+    {
+        question: "In comparison to aldehydes, ketones exhibit reduced reactivity towards nucleophilic addition due to an electronic effect. This effect stems from the presence of two alkyl groups that:",
+        options: [
+            "Increase the overall polarity of the carbonyl bond",
+            "Stabilize the partial positive charge on the carbonyl carbon, thus diminishing its electrophilicity",
+            "Intensify the electrophilicity of the carbonyl carbon",
+            "Create a resonance structure that delocalizes the carbonyl"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory as ketones have two electron-donating alkyl groups that stabilize (neutralize) the partial positive charge on the carbonyl carbon, making it less electrophilic and thus less reactive to nucleophilic addition."
+    },
+    {
+        question: "The reduced reactivity of ketones, compared to aldehydes, in nucleophilic addition reactions is also attributed to steric hindrance. This refers to the effect of the two bulky alkyl groups on the carbonyl carbon that:",
+        options: [
+            "Facilitate the rotation of the carbonyl group",
+            "Increase the bond length of the carbon-oxygen double bond",
+            "Impede the approach of the nucleophile to the electrophilic carbon",
+            "Stabilize the tetrahedral intermediate formed after addition"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory as ketones have two bulky alkyl groups, making the carbonyl carbon less exposed and leading to a more crowded transition state compared to aldehydes, thus impeding the approach of a nucleophile."
+    },
+    {
+        question: "In acid-catalyzed nucleophilic addition reactions, the primary role of the acid is to enhance the reactivity of the carbonyl compound itself. This is achieved by:",
+        options: [
+            "Deprotonating the nucleophile, making it stronger",
+            "Increasing the electron density on the carbonyl carbon",
+            "Stabilizing the tetrahedral intermediate through hydrogen bonding",
+            "Protonating the carbonyl oxygen, thereby increasing the electrophilicity of the carbonyl carbon"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theory as in acid-catalyzed reactions, protonation of the carbonyl oxygen increases the electrophilicity of the carbonyl carbon, making it more susceptible to attack by weak nucleophiles."
+    },
+    {
+        question: "Unlike acid catalysis which activates the electrophile, base catalysis in nucleophilic addition reactions primarily functions by:",
+        options: [
+            "Directly protonating the carbonyl oxygen to make it more reactive",
+            "Increasing the steric hindrance around the carbonyl carbon",
+            "Enhancing the nucleophilic character of the attacking reagent",
+            "Breaking the carbon-oxygen pi bond before nucleophilic attack"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory as base-catalyzed reactions involve a strong base acting as a nucleophile or increasing the nucleophilic character of the reagent, facilitating the attack on the carbonyl carbon."
+    },
+    {
+        question: "To convert a carbonyl compound directly into its corresponding saturated hydrocarbon through the Clemmensen reduction, which specific combination of reagents must be employed?",
+        options: [
+            "Lithium aluminum hydride in ether",
+            "Zinc amalgam and concentrated hydrochloric acid",
+            "Hydrazine, KOH in ethylene glycol",
+            "Sodium borohydride in ethanol"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory as the Clemmensen Reduction uses Zinc amalgam (Zn-Hg) and concentrated HCl as a reducing agent to convert aldehydes or ketones to alkanes."
+    },
+    {
+        question: "The Wolf-Kishner reduction proceeds via a specific nitrogen-containing intermediate formed from the reaction of the carbonyl compound with hydrazine. This crucial intermediate, before subsequent heating with a strong base, is identified as a:",
+        options: [
+            "Imine",
+            "Oxime",
+            "Hydrazone",
+            "Semicarbazone"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory as the Wolf-Kishner Reduction involves treating the aldehyde or ketone with hydrazine (NH2-NH2) to form a hydrazone, which is the key intermediate."
+    },
+    {
+        question: "The characteristic ease with which aldehydes undergo oxidation to carboxylic acids, even by mild agents, is primarily due to the presence of a specific atom directly bonded to the carbonyl carbon. This atom is crucial for the conversion to a hydroxyl group in the carboxylic acid. Which atom is it?",
+        options: [
+            "A hydrogen atom",
+            "An alkyl carbon atom",
+            "A hydroxyl oxygen atom",
+            "An adjacent carbon-carbon pi bond"
+        ],
+        correctAnswer: 0,
+        reasoning: "It's mention in Textbook theory as aldehydes are more easily oxidized than ketones because of the hydrogen atom attached to the carbonyl group, which converts to a hydroxyl group (-OH) during oxidation to a carboxylic acid."
+    },
+    {
+        question: "A positive Tollen's reagent test, indicative of an aldehyde, is visually observed as the formation of a \"silver mirror\" on the test tube walls. This phenomenon is a direct result of the aldehyde's ability to:",
+        options: [
+            "Oxidize ammonia to nitrate ions",
+            "Complex with the silver ions to form a colored solution",
+            "Reduce dissolved Ag+ ions to solid metallic silver",
+            "Precipitate silver hydroxide from the solution"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory as aldehydes reduce Ag+ to metallic silver during the Tollen's reagent test, forming a 'silver mirror'."
+    },
+    {
+        question: "The Fehling's solution test, used to detect aldehydes, relies on the reduction of a specific metal ion. A positive result is visually confirmed by the formation of a distinct precipitate of a particular color. Which statement accurately describes the reduced species and the visual outcome?",
+        options: [
+            "Cu2+ ions are reduced to cuprous oxide (Cu2O), manifesting as a red precipitate",
+            "Ag+ ions are reduced, forming a shiny black mirror",
+            "Cu+ ions are oxidized, resulting in a deeper blue color",
+            "Zn2+ ions are reduced to metallic zinc, forming a gray solid"
+        ],
+        correctAnswer: 0,
+        reasoning: "It's mention in Textbook theory as Fehling's solution contains Cu2+ (blue) ions, which are reduced by aldehydes to cuprous oxide (Cu2O), forming a red precipitate."
+    },
+    {
+        question: "Unlike aldehydes, ketones resist mild oxidizing agents due to the absence of a hydrogen atom on the carbonyl carbon. For oxidation to occur, strenuous conditions are required, which inevitably lead to:",
+        options: [
+            "The formation of a single carboxylic acid with the same number of carbon atoms",
+            "The breaking of carbon-hydrogen bonds adjacent to the carbonyl group",
+            "The cleavage of carbon-carbon sigma bonds, producing a mixture of carboxylic acids with fewer carbon atoms",
+            "The reduction of the carbonyl group to an alcohol"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory as ketones are oxidized only under vigorous conditions by breaking carbon-carbon sigma bonds, leading to a mixture of carboxylic acids with fewer carbon atoms."
+    },
+    {
+        question: "When an unsymmetrical ketone is subjected to vigorous oxidizing conditions, a specific regioselectivity is observed for the carbon-carbon bond cleavage. The oxidation preferentially occurs by breaking the C-C sigma bond adjacent to the carbonyl carbon that is connected to the alkyl group having:",
+        options: [
+            "The largest number of carbon atoms",
+            "The smallest number of hydrogen atoms",
+            "A primary alpha-carbon",
+            "The most branched structure"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory as in unsymmetrical ketones, oxidation occurs by breaking the C-C sigma bond adjacent to the carbon atom joined to a smaller number of hydrogens."
+    },
+    {
+        question: "When considering the olfactory characteristics of carbonyl compounds, a distinct difference is noted based on molecular size and class. Which statement accurately contrasts the odors of lower aldehydes with higher aldehydes and most ketones?",
+        options: [
+            "Both lower aldehydes and higher ketones typically possess sharp, pungent odors",
+            "Lower aldehydes are often odorless, while higher ketones have strong, unpleasant scents",
+            "Lower aldehydes emit sharp, pungent odors, whereas higher aldehydes and most ketones are characterized by pleasant odors",
+            "All aldehydes and ketones are generally odorless compounds"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory as lower aldehydes (formaldehyde, acetaldehyde) have sharp, pungent odors, while higher aldehydes and most ketones have pleasant odors."
+    },
+    {
+        question: "According to the common system of nomenclature for ketones, a compound with an ethyl group and a methyl group attached to the carbonyl carbon would be correctly named as:",
+        options: [
+            "Methyl ethyl ketone",
+            "Acetonylmethane",
+            "Propanone methyl",
+            "Ethyl methyl ketone"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theory as in the common system for ketones, alkyl groups attached to the carbonyl carbon are named alphabetically, followed by 'ketone'. Thus, 'ethyl' comes before 'methyl'."
+    },
+    {
+        question: "In IUPAC nomenclature, the position of the carbonyl carbon in ketones is typically indicated by a number within the name, such as \"pentan-2-one.\" However, there are specific instances where this numbering is omitted, namely for:",
+        options: [
+            "Any ketone with an aryl group",
+            "Only ketones with a single carbon atom",
+            "Propanone and butanone",
+            "Ketones that are also alcohols"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory as the position of the carbonyl carbon must be mentioned for ketones, except for propanone and butanone, where its position is unambiguous."
+    },
+    {
+        question: "The phenomenon of chain isomerism becomes possible for aldehydes once their carbon chain reaches a specific minimum length. This structural variation first manifests in aldehydes possessing:",
+        options: [
+            "Three carbon atoms",
+            "Four or more carbon atoms",
+            "Five or more carbon atoms",
+            "Only cyclic structures"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory as chain isomerism is exhibited by aldehydes with four or more carbon atoms."
+    },
+    {
+        question: "For ketones, position isomerism, where the carbonyl group is located at different points along the carbon chain, is observed only when the molecule contains a certain minimum number of carbon atoms. This minimum threshold is:",
+        options: [
+            "Three carbon atoms",
+            "Four carbon atoms",
+            "Five or more carbon atoms",
+            "Six carbon atoms"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory as position isomerism is exhibited by ketones with five or more carbon atoms."
+    },
+    {
+        question: "The carbon-oxygen double bond (C=O) in carbonyl compounds possesses a characteristic bond length that is notably different from a carbon-oxygen single bond (C-O) found in alcohols and ethers. This difference in length is best described as:",
+        options: [
+            "Shorter than a C-O single bond, reflecting the increased bond order",
+            "Identical, as both involve carbon and oxygen",
+            "Longer than a C-O single bond, due to greater electron density",
+            "Irrelevant to the reactivity of the carbonyl group"
+        ],
+        correctAnswer: 0,
+        reasoning: "It's mention in Textbook theory as the carbon-oxygen double bond length is 120 pm, significantly shorter than a C-O single bond in alcohols and ethers (142 pm), a characteristic of double bonds having higher bond order than single bonds."
+    },
+    {
+        question: "The carbonyl group (C=O) is a fundamental functional group present in a diverse range of organic compounds. Among the following options, which class of compounds is explicitly mentioned as *not* containing a carbonyl group, based on the provided classification?",
+        options: [
+            "Esters",
+            "Ethers",
+            "Amides",
+            "Acid halides"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory as the carbonyl group is found in aldehydes, ketones, carboxylic acids, esters, amides, acid halides, and acid anhydrides. Ethers are not listed among these carbonyl compounds."
+    },
+    {
+        question: "Aldehydes and ketones are noted for their significant roles in various natural processes and industrial applications. This importance spans across diverse areas, including their presence in which of the following categories of biologically vital macromolecules?",
+        options: [
+            "Lipids",
+            "Amino acids",
+            "Proteins and carbohydrates",
+            "Waxes"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory as aldehydes and ketones are commercially and biologically important, being found in substances such as proteins, carbohydrates, and nucleic acids."
+    },
+    {
+        question: "In the IUPAC nomenclature of straight-chain aldehydes, the position of the formyl group's carbon is conventionally not explicitly numbered (e.g., butanal, not butan-1-al). This omission is justified by the understanding that the carbonyl carbon in aldehydes is:",
+        options: [
+            "Always located at the terminus of the carbon chain",
+            "Exclusively sp³ hybridized",
+            "The lowest priority functional group",
+            "Never part of the longest carbon chain"
+        ],
+        correctAnswer: 0,
+        reasoning: "It's mention in Textbook theory as carbon atoms in aldehydes are numbered from the carbonyl carbon, which is always terminal, hence its position is usually not mentioned because it is implicitly understood to be at position 1."
+    },
+    {
+        question: "When subjected to heating with strong oxidizing agents, tertiary alcohols exhibit a distinct reaction pathway compared to primary and secondary alcohols. Instead of forming carbonyl compounds or carboxylic acids, they typically yield:",
+        options: [
+            "Ketones",
+            "Aldehydes",
+            "Alkenes",
+            "Ethers"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory as tertiary alcohols (3°) give alkenes upon heating with strong oxidizing agents, rather than aldehydes or ketones."
+    },
+    {
+        question: "The carbon-oxygen double bond in a carbonyl group is a complex interaction formed by specific orbital overlaps. Which description accurately details the constituent bonds and their origins?",
+        options: [
+            "Two sigma bonds from sp³-sp³ overlap",
+            "One sigma bond from sp²-sp² overlap and one pi bond from sidewise p orbital overlap",
+            "One pi bond from sp²-sp² overlap and one sigma bond from linear p orbital overlap",
+            "Two pi bonds from sp-sp overlap"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory as the C=O bond consists of a sigma (σ) bond (from linear sp²-sp² overlap) and a pi (π) bond (from sidewise overlap of p orbitals)."
+    },
+    {
+        question: "Natural products often feature aldehydes or ketones within their structures, contributing to their biological roles or characteristic properties. Which major class of biomolecules is specifically mentioned as frequently containing aldehydes?",
+        options: [
+            "Fats",
+            "Nucleic acids",
+            "Sugars",
+            "Amino acids"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory as aldehydes are often found in sugars."
+    },
+    {
+        question: "In the common system of nomenclature for aldehydes, the position of substituents is designated using Greek letters. The alpha (α) carbon atom is defined as the carbon atom that is directly:",
+        options: [
+            "The carbonyl carbon itself",
+            "The carbon atom farthest from the formyl group",
+            "The carbon atom that is branched",
+            "Adjacent to the formyl group"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theory as substituent positions in the common system are indicated by Greek letters (α, β, γ, etc.), starting from the carbon atom adjacent to the formyl group."
+    },
+    {
+        question: "In the IUPAC system for naming aldehydes, a prefix such as \"di-\" is sometimes incorporated directly before the \"-al\" suffix. This specific inclusion is necessitated when the aldehyde molecule contains:",
+        options: [
+            "A branched alkyl chain longer than five carbons",
+            "Two distinct types of alkyl substituents",
+            "Two aldehyde functional groups",
+            "An aromatic ring conjugated with the carbonyl"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory as prefixes (di-, tri-) are added before '-al' for multiple carbonyl groups in aldehydes."
+    },
+    {
+        question: "Analogous to aldehydes, the IUPAC nomenclature for ketones also employs prefixes like \"di-\" before the \"-one\" suffix. This convention is applied under circumstances where the ketone possesses:",
+        options: [
+            "Multiple ketone functional groups within its structure",
+            "A high degree of branching on the main carbon chain",
+            "Two alkyl groups that are identical",
+            "A total of five carbon atoms or more"
+        ],
+        correctAnswer: 0,
+        reasoning: "It's mention in Textbook theory as prefixes (di-, tri-) are added before '-one' for multiple carbonyl groups in ketones."
+    },
+    {
+        question: "Among the following examples of carbonyl compounds, which one is specifically cited as possessing a characteristic sharp, pungent odor, typical of smaller aldehydes?",
+        options: [
+            "Acetone",
+            "Benzaldehyde",
+            "Formaldehyde",
+            "Camphor"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory as lower aldehydes, specifically naming formaldehyde and acetaldehyde, have sharp, pungent odors."
+    },
+    {
+        question: "The Friedel-Crafts Acylation reaction requires a specific type of catalyst to facilitate the formation of aromatic ketones. Which of the following correctly identifies the type of catalyst and provides a representative example from the textbook?",
+        options: [
+            "Bronsted-Lowry acid, such as H2SO4",
+            "Transition metal complex, such as Pd(OAc)2",
+            "Strong base, such as NaOH",
+            "Lewis acid, such as AlCl3"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theory as benzene reacts with acid halides in the presence of a Lewis acid catalyst (e.g., AlCl3) for Friedel-Crafts Acylation."
+    },
+    {
+        question: "Formaldehyde stands out as the simplest aldehyde. This characteristic is directly attributed to the fact that its carbonyl carbon atom is bonded to a specific number of hydrogen atoms, which is:",
+        options: [
+            "Zero",
+            "One",
+            "Two",
+            "Three"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory as formaldehyde (H-CHO) is the simplest aldehyde, with two hydrogen atoms bonded to the carbonyl group."
+    },
+    {
+        question: "Beyond chain, position, and functional group isomerism, aldehydes and ketones are also known to exhibit another significant type of dynamic isomerism, involving the interconversion of constitutional isomers. This particular phenomenon is known as:",
+        options: [
+            "Geometric isomerism",
+            "Tautomerism",
+            "Enantiomerism",
+            "Optical isomerism"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory as aldehydes and ketones also exhibit tautomerism."
+    },
+    {
+        question: "The general formula CnH2nO for aldehydes and ketones, assuming acyclic structures, implies a specific degree of unsaturation within the molecule. This formula indicates the presence of:",
+        options: [
+            "One carbon-carbon double bond",
+            "Two carbon-carbon double bonds",
+            "One carbon-oxygen double bond and no other unsaturations or rings",
+            "A triple bond"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory as aldehydes and ketones share the general formula CnH2nO. For acyclic compounds, this formula indicates one degree of unsaturation, which is accounted for by the single carbon-oxygen double bond (C=O)."
+    },
+    {
+        question: "In the IUPAC systematic naming convention for aldehydes, the derivation from the corresponding alkane involves a specific alteration of the suffix. This change requires replacing which specific letter of the alkane name with \"-al\"?",
+        options: [
+            "The final \"e\"",
+            "The entire \"ane\" suffix",
+            "The \"yl\" suffix",
+            "The \"ol\" suffix"
+        ],
+        correctAnswer: 0,
+        reasoning: "It's mention in Textbook theory as in IUPAC nomenclature for aldehydes, the '-e' of the corresponding alkane is replaced with '-al'."
+    },
+    {
+        question: "Analogous to aldehyde nomenclature, the IUPAC naming system for ketones also involves modifying the corresponding alkane name. This modification requires replacing which specific letter from the alkane name with \"-one\"?",
+        options: [
+            "-yl",
+            "-e",
+            "-ane",
+            "-ol"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory as in IUPAC nomenclature for ketones, the '-e' of the corresponding alkane is replaced with '-one'."
+    },
+    {
+        question: "The significant polarization of the carbon-oxygen double bond, primarily due to oxygen's electronegativity, establishes the carbonyl carbon as a site of partial positive charge. This inherent characteristic fundamentally directs the predominant mode of reaction for aldehydes and ketones towards:",
+        options: [
+            "Electrophilic substitution",
+            "Radical addition",
+            "Nucleophilic addition",
+            "Elimination reactions"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory as the polarization of the C=O bond makes the carbonyl carbon electrophilic (partially positive), which makes nucleophilic addition the most common reaction of aldehydes and ketones."
+    },
+    {
+        question: "When acetylene, the simplest alkyne, undergoes acid-catalyzed hydration in the presence of mercuric sulphate and sulfuric acid, it uniquely produces a specific aldehyde as its primary product. This aldehyde is:",
+        options: [
+            "Propanal",
+            "Formaldehyde",
+            "Acetone",
+            "Acetaldehyde"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theory as acetylene yields acetaldehyde upon acid-catalyzed hydration."
+    },
+    {
+        question: "The formation of the pi (π) component of the carbon-oxygen double bond in a carbonyl group is a result of the specific spatial interaction between unhybridized atomic orbitals. This pi bond is formed by the sidewise overlap of:",
+        options: [
+            "sp² orbitals",
+            "s orbitals",
+            "p orbitals",
+            "sp³ orbitals"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory as the pi (π) bond in the C=O group is formed from sidewise overlap of p orbitals."
+    },
+    {
+        question: "The oxygen atom within a carbonyl group possesses unshared electron pairs that reside in specific hybridized orbitals. How many such unshared pairs are typically present on the carbonyl oxygen, and in which orbitals are they located?",
+        options: [
+            "Two pairs, both residing in sp² orbitals",
+            "One pair in an sp³ orbital",
+            "Two pairs, both in unhybridized p orbitals",
+            "Three pairs, with one in a p orbital"
+        ],
+        correctAnswer: 0,
+        reasoning: "It's mention in Textbook theory as oxygen has two unshared electron pairs in sp² orbitals within the carbonyl group."
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-PDA-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Chemistry ";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-CHE-0014';
+let quizData = quizData_WCW_CHE_0014;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-CHE-0014', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-CHE-0014', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-CHE-0014', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_CHE_0014;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_CHE_0014;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_CHE_0014[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_CHE_0014.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
